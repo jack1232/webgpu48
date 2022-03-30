@@ -7,6 +7,7 @@ This sample WebGPU app creates a 3D Wellenkugel surface chart. The output from t
 
 ![image01](dist/assets/image01.png)
 
+
 ## Link for All Source Code Used in the WebGPU Step-By-Step Video Series:
 
 https://github.com/jack1232/WebGPU-Step-By-Step

@@ -1,23 +1,23 @@
  // vertex shader 
 struct Uniforms {
-    viewProjectionMatrix : mat4x4<f32>;
-    modelMatrix : mat4x4<f32>;               
-    normalMatrix : mat4x4<f32>;            
+    viewProjectionMatrix : mat4x4<f32>,
+    modelMatrix : mat4x4<f32>,
+    normalMatrix : mat4x4<f32>,            
 };
 @binding(0) @group(0) var<uniform> uniforms : Uniforms;
 
 struct Input {
-    @location(0) position : vec4<f32>;
-    @location(1) normal : vec4<f32>;
-    @location(2) uv : vec2<f32>;
-    @location(3) color : vec3<f32>;
+    @location(0) position : vec4<f32>,
+    @location(1) normal : vec4<f32>,
+    @location(2) uv : vec2<f32>,
+    @location(3) color : vec3<f32>,
 };
 struct Output {
-    @builtin(position) Position : vec4<f32>;
-    @location(0) vPosition : vec4<f32>;
-    @location(1) vNormal : vec4<f32>;
-    @location(2) vUV : vec2<f32>;
-    @location(3) vColor : vec3<f32>;
+    @builtin(position) Position : vec4<f32>,
+    @location(0) vPosition : vec4<f32>,
+    @location(1) vNormal : vec4<f32>,
+    @location(2) vUV : vec2<f32>,
+    @location(3) vColor : vec3<f32>,
 };
 
 @stage(vertex)
@@ -34,31 +34,31 @@ fn vs_main(input: Input) -> Output {
 
 // fragment shader
 struct FragUniforms {
-    lightPosition : vec4<f32>;   
-    eyePosition : vec4<f32>;
+    lightPosition : vec4<f32>, 
+    eyePosition : vec4<f32>,
 };
 @binding(1) @group(0) var<uniform> fragUniforms : FragUniforms;
 
 struct LightUniforms {
-    ambientIntensity: f32;
-    diffuseIntensity: f32;
-    specularIntensity: f32;    
-    shininess: f32;    
-    specularColorR:f32;
-    specularColorG:f32;
-    specularColorB:f32;
-    isPhong: f32;
-    isTwoSideLighting: f32;
+    ambientIntensity: f32,
+    diffuseIntensity: f32,
+    specularIntensity: f32,    
+    shininess: f32,
+    specularColorR:f32,
+    specularColorG:f32,
+    specularColorB:f32,
+    isPhong: f32,
+    isTwoSideLighting: f32,
 };
 @binding(2) @group(0) var<uniform> lightUniforms : LightUniforms;
 @binding(3) @group(0) var textureSampler : sampler;
 @binding(4) @group(0) var textureData : texture_2d<f32>;
 
 struct FragInput {
-    @location(0) vPosition : vec4<f32>;
-    @location(1) vNormal : vec4<f32>;
-    @location(2) vUV : vec2<f32>;
-    @location(3) vColor : vec3<f32>;
+    @location(0) vPosition : vec4<f32>,
+    @location(1) vNormal : vec4<f32>,
+    @location(2) vUV : vec2<f32>,
+    @location(3) vColor : vec3<f32>,
 };
 
 @stage(fragment)

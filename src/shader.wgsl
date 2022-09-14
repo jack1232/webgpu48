@@ -1,7 +1,7 @@
  // vertex shader 
 struct Uniforms {
     viewProjectionMatrix : mat4x4<f32>,
-    modelMatrix : mat4x4<f32>,
+    modelMatrix : mat4x4<f32>,      
     normalMatrix : mat4x4<f32>,            
 };
 @binding(0) @group(0) var<uniform> uniforms : Uniforms;
@@ -20,7 +20,7 @@ struct Output {
     @location(3) vColor : vec3<f32>,
 };
 
-@stage(vertex)
+@vertex
 fn vs_main(input: Input) -> Output {        
     var output: Output;        
     let mPosition:vec4<f32> = uniforms.modelMatrix * input.position; 
@@ -34,7 +34,7 @@ fn vs_main(input: Input) -> Output {
 
 // fragment shader
 struct FragUniforms {
-    lightPosition : vec4<f32>, 
+    lightPosition : vec4<f32>,
     eyePosition : vec4<f32>,
 };
 @binding(1) @group(0) var<uniform> fragUniforms : FragUniforms;
@@ -61,7 +61,7 @@ struct FragInput {
     @location(3) vColor : vec3<f32>,
 };
 
-@stage(fragment)
+@fragment
 fn fs_main(input: FragInput) -> @location(0) vec4<f32> {
     let textureColor:vec3<f32> = (textureSample(textureData, textureSampler, input.vUV)).rgb;
     let N:vec3<f32> = normalize(input.vNormal.xyz);                
